@@ -8,8 +8,8 @@ public class PlayerMovement : MonoBehaviour
     private float movementSpeed = 10f;
     
     [SerializeField]
-    private float jumpForce  = 10f;
-    //public float sprint = 20f;
+    
+    public float sprint = 20f;
     private float movementX;
     private float movementY;
 
@@ -30,6 +30,14 @@ public class PlayerMovement : MonoBehaviour
         movementY = Input.GetAxisRaw("Vertical");
 
         transform.position += new Vector3(movementX, movementY, 0) * movementSpeed * Time.deltaTime;
+
+        if(Input.GetKey(KeyCode.LeftShift)) {
+            movementSpeed = sprint;
+        }
+        else{
+            movementSpeed = 2.5f;
+        }
+
     }
 
 }
